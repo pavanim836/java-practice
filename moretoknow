@@ -47,4 +47,38 @@ class Solution{
 }
 
 
+//The challenge here is to read  lines of input until you reach EOF, then number and print all  lines of content.
+//Why EOF (hasNextLine()) is used
+//Because input size is unknown
 
+//In EOF-based problems, you do not know how many lines the input will have.
+
+//❌ You cannot use a for loop
+
+//❌ You cannot fix the number of iterations
+
+//✅ You must read until input ends
+
+//EOF solves this.
+
+//<----------------------answer------------------------>
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int linenumber=1;
+        while(sc.hasNextLine()){
+            String line=sc.nextLine();
+            System.out.println(linenumber+" "+line);
+            linenumber++;
+        }
+    }
+}

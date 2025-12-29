@@ -1,3 +1,58 @@
+//Scanner.nextLine() is used after integer input to consume the leftover newline character (\n) that remains in the input buffer after methods like nextInt().
+Step-by-step:
+->nextInt() reads only the number 20
+->It does NOT consume the Enter key
+-->The newline (\n) remains in the input buffer
+-->nextLine() reads that leftover newline
+-->Result: name = "" (empty string) 
+
+<---------------------------answer----------------------------------->
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int i = scan.nextInt();
+        double d = scan.nextDouble();
+        scan.nextLine();
+        String s = scan.nextLine();
+
+        // Write your code here.
+
+        System.out.println("String: " + s);
+        System.out.println("Double: " + d);
+        System.out.println("Int: " + i);
+    }
+}
+
+<-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+//converting int to string
+int num = 123;
+String str = String.valueOf(num);
+                or
+int num = 123;
+String str = Integer.toString(num);
+
+//converting double to int
+double d = 10.75;
+int i = (int) d;   // Output: 10
+
+//converting double to string
+double d = 5.5;
+String s = String.valueOf(d);
+
+//converting boolean to string
+boolean b = true;
+String s = String.valueOf(b);
+
+//converting string to num
+String s = "123";
+int a = Integer.parseInt(s);
+
+<----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 //Java has 8 primitive data types; char, boolean, byte, short, int, long, float, and double. For this exercise, we'll work with the primitives used to hold integer values (byte, short, int, and long):
 
 //A byte is an 8-bit signed integer.
@@ -10,8 +65,6 @@
 
 import java.util.*;
 import java.io.*;
-
-
 
 class Solution{
     public static void main(String []argh)
@@ -46,6 +99,7 @@ class Solution{
     }
 }
 
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 //The challenge here is to read  lines of input until you reach EOF, then number and print all  lines of content.
 //Why EOF (hasNextLine()) is used
@@ -82,3 +136,54 @@ public class Solution {
         }
     }
 }
+
+<-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+//Static initialization blocks are executed when the class is loaded, and you can initialize static variables in those blocks.
+//It is primarily used to initialize static variables that require complex logic or computation.
+//Declared using the static { } keyword.
+//Executes before the main() method.
+//Runs only once per class, regardless of how many objects are created.
+//Used only for static members.
+//Syntax    :class Example {
+                     static {
+                         // static initialization code
+                     }
+            }
+
+
+//There are two lines of input. The first line contains : the breadth of the parallelogram. The next line contains : the height of the parallelogram.
+//If both values are greater than zero, then the main method must output the area of the parallelogram. Otherwise, print "java.lang.Exception: Breadth and height must be positive" without quotes.
+
+<------------------------------ANSWER--------------------------->
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    static int H;
+    static int B;
+    static boolean flag;
+    static{
+        Scanner sc=new Scanner(System.in);
+        B=sc.nextInt();
+        H=sc.nextInt();
+        if(B>0 && H>0){
+            flag=true;
+        }
+        else{
+            System.out.println("java.lang.Exception: Breadth and height must be positive");
+            flag=false;
+        } 
+     }
+public static void main(String[] args){
+		if(flag){
+			int area=B*H;
+			System.out.print(area);
+		}	
+	}
+}
+
+<------------------------------------------------------------------------------------------------------------------------------------->

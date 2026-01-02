@@ -243,3 +243,77 @@ public class DayFromDate {
         System.out.println("Day is: " + dayOfWeek);
     }
 }
+
+<--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+Given two strings of lowercase English letters,  and , perform the following operations:
+
+Sum the lengths of  and .
+Determine if  is lexicographically larger than  (i.e.: does  come before  in the dictionary?).
+Capitalize the first letter in  and  and print them on a single line, separated by a space.
+<-----------------------answer---------------------------------->
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String B=sc.next();
+        int totsum=A.length()+B.length();
+        System.out.println(totsum);
+        if(A.compareTo(B)>0){                //compares to strings,which is greater?
+            System.out.println("Yes");
+        }
+        else{
+            System.out.println("No");
+        }
+        String capA = A.substring(0, 1).toUpperCase() + A.substring(1);
+        String capB = B.substring(0, 1).toUpperCase() + B.substring(1);
+
+        System.out.println(capA + " " + capB);
+    }
+}
+
+//A.substring(0, 1).toUpperCase()----->extracts the characters between 0,1 i.e.,0th character. then converts it to uppercase
+//A.substring(1)----------->then adds the remaining characters
+
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+Given a string, , and an integer, , complete the function so that it finds the lexicographically smallest and largest substrings of length .
+<---------------------------------answer------------------------------------>
+import java.util.Scanner;
+
+public class Solution {
+
+    public static String getSmallestAndLargest(String s, int k) {
+          String smallest = s.substring(0, k);
+          String largest = s.substring(0, k);
+        
+        
+    for (int i = 1; i <= s.length() - k; i++) {
+        String current = s.substring(i, i + k);
+
+        if (current.compareTo(smallest) < 0) {
+            smallest = current;
+        }
+
+        if (current.compareTo(largest) > 0) {
+            largest = current;
+        }
+    }
+
+        return smallest + "\n" + largest;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+        int k = scan.nextInt();
+        scan.close();
+      
+        System.out.println(getSmallestAndLargest(s, k));
+    }
+}
+<----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->

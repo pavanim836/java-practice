@@ -344,6 +344,102 @@ public class Solution {
         }
     }
 }
+<-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+//Two strings,  and , are called anagrams if they contain all the same characters in the same frequencies.
+//For this challenge, the test is not case-sensitive. For example, the anagrams of CAT are CAT, ACT, tac, TCA, aTC, and CtA.
+<-------------------------------------------answer------------------------------------------------>
+import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+       
+    if (a.length() != b.length()) {
+        return false;
+    }
+
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+
+    int[] count = new int[26];
+
+    for (int i = 0; i < a.length(); i++) {
+        count[a.charAt(i) - 'a']++;
+        count[b.charAt(i) - 'a']--;
+    }
+
+    for (int c : count) {
+        if (c != 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+    public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
+<<<<<<<<<<<<<<<<<<<<<<<<<OR>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import java.util.Arrays;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+
+        if (a.length() != b.length()) {
+            return false;
+        }
+
+        char[] arr1 = a.toCharArray();
+        char[] arr2 = b.toCharArray();
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        return Arrays.equals(arr1, arr2);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagram("CAT", "tac")); // true
+    }
+}
+<------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+Given a string, , matching the regular expression [A-Za-z !,?._'@]+, split the string into tokens.
+We define a token to be one or more consecutive English alphabetic letters. Then, print the number of tokens, followed by each token on a new line.
+<-------------------------------answer------------------------------------------->
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine().trim();  //.trim()Removes leading and trailing delimiters, Prevents empty tokens at the start or end.
+        if(s.isEmpty()){
+            System.out.println(0);
+            return;
+        }
+        String regex = "[^A-Za-z]+";  //splits everything other than letters  -->[+]it is used because if there are more than one seperators[spaces,punctuations] 
+                                      //it considers it as one seperator.
+        String[] arr = s.split(regex);
+        System.out.println(arr.length);
+        
+        for (String str : arr) {
+            System.out.println(str);
+        }
+        scan.close();
+    }
+}
 
 
 

@@ -478,5 +478,47 @@ When syntax is wrong → exception thrown
 
 <------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
+public class Solution{
+	public static void main(String[] args){
+		
+		Scanner in = new Scanner(System.in);
+		int testCases = Integer.parseInt(in.nextLine());
+		while(testCases>0){
+			String line = in.nextLine();
+			
+          	Pattern pattern = Pattern.compile("<(.+)>([^<]+)</\\1>");
+			Matcher matcher = pattern.matcher(line);
 
+            boolean found = false;
+
+            while (matcher.find()) {
+                System.out.println(matcher.group(2));  ---->group(2) bcz content is in secoond position
+                found = true;
+            }
+
+            if (!found) {
+                System.out.println("None");
+            }
+			testCases--;
+		}
+	}
+}
+
+Pattern  → defines rule
+   ↓
+Matcher → applies rule to string
+   ↓
+find()  → searches next match
+   ↓
+group() → extracts matched parts
+
+(1) <(.+)> ----> <h1>
+(2) ([^<]+) ---> content
+(3) </\\1> ----> </h1>    [\1 ensures opening and closing tags are identical]
+  
